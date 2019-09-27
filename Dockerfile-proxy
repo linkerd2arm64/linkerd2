@@ -1,6 +1,6 @@
-ARG RUNTIME_IMAGE=gcr.io/linkerd-io/base:2019-02-19.01
+ARG RUNTIME_IMAGE=linkerd2arm64/base:2019-02-19.01
 
-FROM gcr.io/linkerd-io/base:2019-02-19.01 as fetch
+FROM linkerd2arm64/base:2019-02-19.01 as fetch
 RUN apt-get update && apt-get install -y ca-certificates
 WORKDIR /build
 COPY bin/fetch-proxy bin/fetch-proxy
@@ -9,7 +9,7 @@ RUN (proxy=$(bin/fetch-proxy $(cat proxy-version)) && \
     mv "$proxy" linkerd2-proxy)
 
 ## compile proxy-identity agent
-FROM gcr.io/linkerd-io/go-deps:c7fb42bd as golang
+FROM linkerd2arm64/go-deps:c7fb42bd as golang
 WORKDIR /linkerd-build
 COPY pkg/flags pkg/flags
 COPY pkg/tls pkg/tls

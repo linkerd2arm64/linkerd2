@@ -11,7 +11,9 @@ bindir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 rootdir="$( cd $bindir/.. && pwd )"
 builddir="$rootdir/target/proxy"
 
-version="${1:-latest}"
+# arm64 build on available for v2.5.0, corresponding version is 0417713
+#version="${1:-latest}"
+version="0417713"
 latest_sha=""
 
 if [ "$version" == "latest" ]; then
@@ -25,7 +27,9 @@ archive="$builddir/$filename"
 
 if [ ! -f "$archive" ]; then
   mkdir -p "$builddir"
-  curl -vsL "$builddir" "https://build.l5d.io/linkerd2-proxy/$filename" > "$archive"
+  # arm64 build available as a marked release in github repo linkerd2arm/linkerd2-proxy
+  # curl -vsL "$builddir" "https://build.l5d.io/linkerd2-proxy/$filename" > "$archive"
+  curl -vsL "$builddir" "https://github.com/linkerd2arm64/linkerd2-proxy/releases/download/linkerd2%2Fstable-2.5.0-arm64/$filename" > "$archive"
 fi
 
 if [ -n "$latest_sha" ]; then

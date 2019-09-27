@@ -68,5 +68,5 @@ validate_tag() {
 
 validate_go_deps_tag() {
     file="$1"
-    validate_tag "$file" "gcr.io/linkerd-io/go-deps" "$(go_deps_sha)"
+    validate_tag "$file" "linkerd2arm64/go-deps" "$(go_deps_sha)"
 }
