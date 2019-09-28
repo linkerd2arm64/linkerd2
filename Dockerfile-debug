@@ -1,4 +1,4 @@
-FROM linkerd2arm642arm64/base:2019-02-19.01
+FROM linkerd2arm64/base:2019-02-19.01
 RUN apt-get update && apt-get install -y --no-install-recommends \
     tcpdump \
     iproute2 \
